@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEDRO SILVA - Scheduled Maintenance</title>
+    <link rel="icon" href="./favicon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .maintenance-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .maintenance-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .maintenance-container h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .maintenance-container p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .maintenance-message {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+            text-align: left;
+            color: #333;
+        }
+
+        .maintenance-message p {
+            margin-bottom: 0;
+        }
+
+        .maintenance-time {
+            font-size: 0.9rem;
+            color: #999;
+            margin-top: 20px;
+        }
+
+        .contact-info {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .contact-info p {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #ffc107;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            .maintenance-container {
+                padding: 40px 25px;
+            }
+
+            .maintenance-container h1 {
+                font-size: 1.8rem;
+            }
+
+            .maintenance-icon {
+                font-size: 60px;
+            }
+        }
+
+        .back-to-login {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .back-to-login a {
+            color: #0d6efd;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-to-login a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="maintenance-container">
+        <div class="maintenance-icon">🔧</div>
+        
+        <h1>Scheduled Maintenance</h1>
+        
+        <div class="status-badge">Temporary Downtime</div>
+        
+        <p>We apologize for the inconvenience. Our site is currently undergoing scheduled maintenance.</p>
+        
+        <div class="maintenance-message">
+            <p><strong>What's happening?</strong></p>
+            <p>We're performing important system upgrades and improvements to enhance your experience and ensure optimal performance.</p>
+        </div>
+        
+        <p>We expect to be back online shortly. Thank you for your patience and understanding.</p>
+        
+        <div class="maintenance-time">
+            <p>Last updated: <span id="updateTime"></span></p>
+        </div>
+        
+        <div class="contact-info">
+            <p><strong>Need assistance?</strong></p>
+            <p>
+                Contact us at <a href="mailto:hello@frompedrosilva.nl">hello@frompedrosilva.nl</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Display current date and time
+        const now = new Date();
+        const options = { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric', 
+            hour: '2-digit', 
+            minute: '2-digit',
+            hour12: false,
+            timeZone: 'Europe/Lisbon'
+        };
+        document.getElementById('updateTime').textContent = now.toLocaleDateString('en-US', options);
+    </script>
+
+</body>
+</html>

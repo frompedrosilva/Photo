@@ -1,0 +1,16 @@
+# File Access Restricter
+
+RewriteEngine On
+
+# Disable directory listing
+Options -Indexes
+
+# Protect sensitive file types
+<FilesMatch "\.(pdf|zip|wav|wmv|wma|avi|mov|mp4|m4v|mp3)$">
+    Require all denied
+</FilesMatch>
+
+# Protect configuration and system files
+<FilesMatch "(\.env|\.ini|\.log|\.sql|\.config|\.htaccess|\.htpasswd)$">
+    Require all denied
+</FilesMatch>

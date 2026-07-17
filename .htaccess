@@ -1,0 +1,37 @@
+# -----------------------
+ErrorDocument 400 /error.php
+ErrorDocument 401 /error.php
+ErrorDocument 403 /error.php
+ErrorDocument 404 /error.php
+ErrorDocument 405 /error.php
+ErrorDocument 408 /error.php
+ErrorDocument 429 /error.php
+ErrorDocument 500 /error.php
+ErrorDocument 501 /error.php
+ErrorDocument 502 /error.php
+ErrorDocument 503 /maintenance
+ErrorDocument 504 /error.php
+ErrorDocument 505 /error.php
+
+# -----------------------
+SetEnvIf Request_URI "^" MANUTENCAO=false
+
+# -----------------------
+RewriteEngine On
+RewriteCond %{REQUEST_URI} ^/(contact.*|login.*|register.*|setup-database.*|dashboard.*|profile.*|admin.*|api.*|theme.*|style.*)$ [NC]
+RewriteRule ^ - [L]
+
+RewriteCond %{REQUEST_URI} ^/redirect/.*$ [NC]
+RewriteRule ^ - [L]
+
+# -----------------------
+RewriteCond %{REQUEST_URI} !^/maintenance\.html$
+RewriteCond %{ENV:MANUTENCAO} true [NC]
+RewriteRule ^.*$ /maintenance.html [R=503,L]
+
+# -----------------------
+Header always set Retry-After "3600"
+
+# -----------------------
+RewriteCond %{ENV:HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
